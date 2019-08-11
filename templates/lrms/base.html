@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://getbootstrap.com/docs/4.1/examples/navbar-fixed/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+
+    <title>{% block title %}Land Records Management System{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'bootstrap/top_navbar/navbar-top-fixed.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="{% url 'lrms:home' %}">LRMS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'lrms:home' %}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'lrms:add_owner' non_existing_owner=0 %}">Add Property</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'lrms:property_list' %}">List Properties</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="{% url 'lrms:home' %}">Make Payment</a>
+          </li>
+        </ul>
+          <div class="active inline-related">
+              <a href="{% url 'lrms:lands_user_profile' pk=request.user.pk %}"><h6>Logged in as {{ request.user.get_full_name }}</h6></a>
+          </div>
+          <div class="active inline-related">
+               <a class="nav-link justify-content-end" href="{% url 'lrms:logout' %}">Log Out</a>
+          </div>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+      <div class="jumbotron">
+          {% block content %}
+              <h1 class="alert-warning">Bare Base</h1>
+          {% endblock %}
+      </div>
+      {% block list_content %}
+      {% endblock %}
+    </main>
+    <footer class="mt-auto position-static blockquote-footer text-center text-success">
+        <div class="inner ">
+          <p>Copyright <a href="">Elysian</a>, by <a href="">Front Dev Team</a>.</p>
+        </div>
+      </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'bootstrap/top_navbar/jquery-3.3.1.slim.min.js.download' %}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="{% static 'owner/vendor/jquery/jquery.slim.min.js' %}"><\/script>')</script>
+    <script src="{% static 'bootstrap/top_navbar/popper.min.js.download' %}"></script>
+    <script src="{% static 'bootstrap/top_navbar/bootstrap.min.js.download' %}"></script>
+
+
+</body></html>

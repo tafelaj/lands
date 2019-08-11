@@ -1,0 +1,16 @@
+{% extends 'lrms/base.html' %}
+{% block content %}
+    <div class="text-center" >
+        <h3>{{ property }}</h3>
+    </div>
+    <ol class="badge-success">
+        <li>Property Owner: {{ property.owner }}</li>
+        <li>Property Successor: {{ property.successor}} - {{ property.successor_relation }}</li>
+        <li>Property Area: {{ property.area }}</li>
+        <li>Holding Number: {{ property.holding_number }}</li>
+        <li>Property Type: {{ property.type }}</li>
+        <li>Local Authority: {{ property.local_authority }}</li>
+        <li>Current Balance: {{ property.balance }}</li>
+    </ol>
+    <a class="btn btn-primary" href="{% url 'lrms:property_page' property_pk=property.pk %}">Property Page</a>
+{% endblock %}

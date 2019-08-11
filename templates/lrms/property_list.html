@@ -1,0 +1,10 @@
+{% extends 'lrms/base.html' %}
+{% block content %}
+        <ol>
+            {% for property in object_list %}
+            <li>
+                <a href={{ property.get_absolute_url }}>{{ property }}</a>
+            </li>
+            {% endfor %}
+        </ol>
+{% endblock %}

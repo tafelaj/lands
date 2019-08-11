@@ -1,0 +1,13 @@
+{% extends 'lrms/base.html' %}
+{% block content %}
+    <h4>Payment History For {{ property}}</h4>
+    <hr style="height: auto">
+    <ol>
+        {% for payment in payment_history %}
+            <li>
+                <a class="btn-sm btn-success" href="{% url 'lrms:payment_detail' pk=payment.pk%}">{{ payment }}</a>
+            </li>
+            <hr style="height: auto">
+        {% endfor %}
+    </ol>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'lrms/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Add Owner{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+    {% if non_existing_owner == '0' %}
+            <p class="lead" align="center">Enter an NRC below to check if the owner already exists(Already Owns a Plot)</p>
+         <form class="form-inline justify-content-center mt-2 mt-md-0" action="{% url 'lrms:nrc_check' %}" method="get">
+             {% csrf_token %}
+                <input class="form-control mr-sm-2" type="text" name="nrc" placeholder="Enter Owner NRC">
+                <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Check">
+         </form>
+            <hr style="height: auto">
+            <h5 class="lead font-weight-bold" align="center">Or</h5>
+            <hr style="height: auto">
+        {% endif %}
+        {% if non_existing_owner == '1' %}
+            <p class="text-warning">An Owner With The NRC You Entered Does Not Exist Or You Entered The NRC Incorrectly</p>
+            <hr style="height: auto">
+        {% endif %}
+
+        <p class="lead" align="center">Create a New owner by filling in the form below(First Ever Plot)</p>
+        <div class="card">
+            <div class="card-header">
+            <h5>Owner Create Form</h5>
+            </div>
+            <div class="card-body">
+                <form class="form-inline mt-2 mt-md-0 card" action="" method="post">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Add Owner">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

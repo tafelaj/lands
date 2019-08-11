@@ -1,0 +1,32 @@
+{% extends 'owner/base.html' %}
+{% block title %}
+    home
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+<h3>{{ owner }}</h3>
+    <p>
+    {% if property.count == 1 %}
+        You own {{ property.count }} property.
+    {% elif property.count > 1%}
+        You own {{ property.count }} properties
+    {% else %}
+        You Do Not Own Any Land Property, Apply For Land at your Local Council.
+    {% endif %}
+    </p>
+    <div class="content-justify-center">
+    {% for property in property %}
+        <ol>
+            <li>
+                <a href="{% url 'owner:property_detail' pk=property.pk %}">
+                {{ property }}--{{ property.local_authority.upper }}
+                </a>
+            </li>
+        </ol>
+
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'owner/base.html' %}
+
+{% block title %}
+    Property Details
+{% endblock %}
+{% block content %}
+    <div class="text-center" >
+        <h3>{{ property }}</h3>
+    </div>
+    <ol class="badge-success">
+        <li>Property Owner: {{ property.owner }}</li>
+        <li>Property Successor: {{ property.successor}} - {{ property.successor_relation }}</li>
+        <li>Property Area: {{ property.area }}</li>
+        <li>Holding Number: {{ property.holding_number }}</li>
+        <li>Property Type: {{ property.type }}</li>
+        <li>Local Authority: {{ property.local_authority }}</li>
+        <li>Current Balance: {{ property.balance }}</li>
+    </ol>
+    <a class="btn btn-sm btn-primary" href="{% url 'owner:owner_home' owner_pk=property.owner.pk%}">
+        Return To Property List
+    </a>
+{% endblock %}

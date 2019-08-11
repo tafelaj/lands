@@ -1,0 +1,41 @@
+{% extends 'lrms/base.html' %}
+{% block title %}Property List{% endblock %}
+
+{% block content %}
+    <h4>Property List For {{ owner }}</h4>
+    <hr style="height: auto">
+    <a class="btn btn-primary" href="{% url 'lrms:owner_detail' pk=owner.pk %}">Back To Owner Details</a>
+{% endblock content%}
+
+{% block list_content %}
+
+
+    <div class="card mb-4">
+		<div class="card-block">
+			<h3 class="card-title">List Of Properties [Total: {{ queryset.count }}]</h3>
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Holding Number</th>
+							<th>Local Authority</th>
+							<th>Area</th>
+							<th>Type</th>
+						</tr>
+					</thead>
+					<tbody>
+                    {% for plot in queryset %}
+                        <tr>
+                            <td><a href="{% url 'lrms:property_detail' pk=plot.pk%}">{{ plot.holding_number }}</a></td>
+							<td>{{ plot.local_authority }}</td>
+							<td>{{ plot.area }}</td>
+							<td>{{ plot.type }}</td>
+						</tr>
+
+                    {% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+</div>
+{% endblock list_content %}

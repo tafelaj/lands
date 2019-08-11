@@ -1,0 +1,19 @@
+{% extends 'lrms/base.html' %}
+{% block title %}Lands User Profile{% endblock %}
+
+{% block content %}
+    <h5>Profile for {{ profile.get_full_name }}.</h5>
+    <h6>Username: {{ profile.username }}</h6>
+    <a class="btn btn-primary" href="#">Update Profile</a>
+
+{% endblock %}
+
+{% block list_content %}
+    <p class="form-text">
+        Man Number: {{ profile.man_number }}<hr style="height: auto;">
+        Position: {{ profile.position }}<hr style="height: auto;">
+        Local Authority: {{ profile.local_authority }}<hr style="height: auto;">
+        Phone: {{ profile.phone }}<hr style="height: auto;">
+        Email: {{ profile.email }}
+    </p>
+{% endblock %}

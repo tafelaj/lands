@@ -1,0 +1,23 @@
+{% extends 'lrms/base.html' %}
+{% block content %}
+    <h3 class="text-center">
+        {{ property }}
+    </h3>
+    <hr style="height: auto">
+    <div align="center">
+        <a class="btn btn-sm btn-primary" href="{% url 'lrms:payment_add' property_pk=property.pk%}"> Make Payment</a>
+        <a class="btn btn-sm btn-primary" href="{% url 'lrms:payment_history' property_pk=property.pk%}">Payment History</a>
+        <a class="btn btn-sm btn-primary" href="{% url 'lrms:property_detail' pk=property.pk %}">Full Property Details</a>
+        <a class="btn btn-sm btn-primary" href="{% url 'lrms:owner_detail' pk=property.owner.pk%}">Owner Details</a>
+    </div>
+    <hr style="height: auto">
+
+    <div class="container">
+        <div class="jumbotron-fluid">
+            <h5>{{ property.holding_number.upper}}</h5><br>
+            <h5>{{ property.owner }}</h5><br>
+            <h5>{{ property.area }}</h5>
+        </div>
+    </div>
+
+{% endblock %}

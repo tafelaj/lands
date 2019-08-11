@@ -1,0 +1,18 @@
+{% block search %}
+<form class="form-inline mt-2 mt-md-0" action="" method="get">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search House Number"
+           aria-label="Search" name="q" value="{{ request.GET.q }}">
+    <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search" />
+</form>
+    {% if query_list %}
+        <h4>Search Results</h4>
+        {% for query in query_list %}
+            <a href="{% url 'lrms:payment_add' property_pk=query.id %}">{{ query }}</a>
+
+        {% endfor %}
+    {% else %}
+        {% if query_list != None %}
+        <h6 class="alert-danger">"{{ request.GET.q }}" Does Not Match Any House Number in the System.</h6>
+        {% endif %}
+    {% endif %}
+{% endblock %}

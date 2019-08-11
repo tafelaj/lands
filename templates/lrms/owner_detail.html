@@ -1,0 +1,16 @@
+{% extends 'lrms/base.html' %}
+{% block title %}
+    Owner Details
+{% endblock %}
+
+{% block content %}
+    <h3>{{ ownerprofile }}</h3>
+    <h6>Gender: {{ ownerprofile.gender }}</h6>
+    <h6>NRC: {{ ownerprofile.nrc }}</h6>
+    <h6>Age: {{ ownerprofile.age }}</h6>
+    <h6>Telephone: {{ ownerprofile.telephone }}</h6>
+    <h6>Address: {{ ownerprofile.address }}</h6>
+    <h6>Email: {{ ownerprofile.email }}</h6>
+    <a class="btn btn-primary" href="{% url 'lrms:property_list_specific' owner_pk=ownerprofile.pk%}">Full Property List</a>
+
+{% endblock %}

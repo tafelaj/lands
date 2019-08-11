@@ -1,0 +1,27 @@
+{% extends 'lrms/base.html' %}
+{% block title %}LRMS Home{%endblock%}
+{% block content %}
+
+    <h2 align="center">Welcome to LRMS</h2>
+     <p class="lead" align="center">
+     Enter a house number below to make payments for the house and get access to other information.
+     </p>
+
+        <h6 class="text-center">Enter a Hause Number Below.</h6>
+    <form class="form-inline justify-content-center mt-2 mt-md-0" action="" method="get">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search House Number"
+               aria-label="Search" name="q" value="{{ request.GET.q }}">
+        <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search" />
+    </form>
+        {% if query_list %}
+            <hr style="height: auto">
+            <h4>Search Results</h4>
+            {% for query in query_list %}
+                <a href="{% url 'lrms:property_page' property_pk=query.id %}">{{ query }}</a><br>
+            {% endfor %}
+        {% else %}
+            {% if query_list != None %}
+            <h6 class="alert-danger text-center">"{{ request.GET.q }}" Does Not Match Any House Number in the System.</h6>
+            {% endif %}
+        {% endif %}
+{% endblock %}

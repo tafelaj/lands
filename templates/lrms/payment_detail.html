@@ -1,0 +1,14 @@
+{% extends 'lrms/base.html' %}
+
+{% block content %}
+<h3 class="text-center">PAYMENT FOR: {{ payment.property }}</h3>
+    <hr style="height: auto">
+    <h4>Received From: {{ payment.received_from }}</h4>
+    <h4>Received By: {{ payment.received_by }}</h4>
+    <h4>Amount: K{{ payment.amount }}</h4>
+    <h4>Description: {{ payment.description }}</h4>
+    <h4>Date: {{ payment.date }}</h4>
+    <hr style="height: auto">
+    <a class="btn btn-primary" href="{% url 'lrms:property_page' property_pk=payment.property.pk %}">Back To Property Details</a>
+    <a class="btn btn-primary" href="{% url 'lrms:payment_history' property_pk=payment.property.pk %}">Payment History</a>
+{% endblock %}
